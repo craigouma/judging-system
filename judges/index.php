@@ -1,5 +1,5 @@
 <?php 
-require_once '../includes/functions.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 // For demo purposes, we'll use judge_id=1
 // In a real app, this would come from authentication
@@ -36,7 +36,7 @@ $judge = current(array_filter(getJudges(), function($j) use ($judgeId) {
             <td><?= $user['id'] ?></td>
             <td><?= htmlspecialchars($user['name']) ?></td>
             <td>
-                <form action="score.php" method="post">
+                <form action="/judging-system/submit-score" method="post">
                     <input type="hidden" name="judge_id" value="<?= $judgeId ?>">
                     <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
                     <input type="number" name="score" min="1" max="100" required>

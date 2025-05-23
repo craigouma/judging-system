@@ -1,4 +1,4 @@
-<?php require_once '../includes/functions.php'; ?>
+<?php require_once __DIR__ . '/../includes/functions.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,22 @@
         th { background-color: #f2f2f2; }
         form { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
         input, button { padding: 8px; margin: 5px 0; }
+        .alert { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .alert-success { background-color: #dff0d8; color: #3c763d; }
+        .alert-error { background-color: #f2dede; color: #a94442; }
     </style>
 </head>
 <body>
     <h1>Judge Management</h1>
     
+    <?php if (isset($_GET['success'])): ?>
+        <div class="alert alert-success">Judge added successfully!</div>
+    <?php elseif (isset($_GET['error'])): ?>
+        <div class="alert alert-error"><?= htmlspecialchars($_GET['error']) ?></div>
+    <?php endif; ?>
+    
     <h2>Add New Judge</h2>
-    <form action="add_judge.php" method="post">
+    <form action="/judging-system/add-judge" method="post">
         <label>Username: <input type="text" name="username" required></label><br>
         <label>Display Name: <input type="text" name="display_name" required></label><br>
         <button type="submit">Add Judge</button>
