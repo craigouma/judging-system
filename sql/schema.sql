@@ -27,7 +27,7 @@ CREATE TABLE scores (
 
 -- Sample data
 INSERT INTO users (name) VALUES 
-('Participant 1'), ('Participant 2'), ('Participant 3'), ('Participant 4');
+('Participant 1'), ('Participant 2'), ('Participant 3'), ('Participant 4'), ('Participant 10'), ('Participant 11'), ('Participant 12');
 
 INSERT INTO judges (username, display_name) VALUES 
 ('judge1', 'Judge One'), ('judge2', 'Judge Two'), ('judge3', 'Judge Three');

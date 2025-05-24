@@ -38,10 +38,25 @@ function addJudge($username, $displayName) {
 
 function addScore($judgeId, $userId, $score) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO scores (judge_id, user_id, score) VALUES (?, ?, ?)");
-    $stmt->bind_param("iii", $judgeId, $userId, $score);
-    return $stmt->execute();
+    try {
+        $stmt = $conn->prepare("INSERT INTO scores (judge_id, user_id, score) VALUES (?, ?, ?)");
+        return $stmt->execute([$judgeId, $userId, $score]);
+    } catch (PDOException $e) {
+        // Handle duplicate entry specifically
+        if ($e->errorInfo[1] == 1062) { // MySQL duplicate key error
+            return false;
+        }
+        throw $e;
+    }
 }
+
+function scoreExists($judgeId, $userId) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM scores WHERE judge_id = ? AND user_id = ?");
+    $stmt->execute([$judgeId, $userId]);
+    return $stmt->fetchColumn() > 0;
+}
+
 
 function getUnscoredUsers($judgeId) {
     global $conn;

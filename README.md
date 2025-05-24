@@ -1,4 +1,3 @@
-
 # Judging System - LAMP Stack Implementation
 
 ## Overview
