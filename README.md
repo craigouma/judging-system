@@ -24,8 +24,17 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
    ```bash
    git clone https://github.com/yourusername/judging-system.git
    cd judging-system
-   ```
+   # 2. Copy to web root (better than direct clone to /var/www/html)
+   sudo rsync -avz ./ /var/www/html/judging-system/ --exclude='.git'
 
+**Set secure permissions**
+sudo chown -R www-data:www-data /var/www/html/judging-system
+sudo find /var/www/html/judging-system -type d -exec chmod 755 {} \;
+sudo find /var/www/html/judging-system -type f -exec chmod 644 {} \;
+
+**Special permissions for writeable folders**
+sudo chmod -R 775 /var/www/html/judging-system/storage  # If you have logs/cache
+   ```
 2. **Create the database**
    ```bash
    # Create database and user (MySQL example)
@@ -49,8 +58,8 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
    <?php
    define('DB_HOST', 'localhost');
    define('DB_NAME', 'judging_system');
-   define('DB_USER', 'judge_app');
-   define('DB_PASS', 'securepassword');
+   define('DB_USER', 'judging_user');
+   define('DB_PASS', 'SecurePassword123!');
    
    ```
 
