@@ -158,8 +158,8 @@ If expanded further, features could include:
 
 ## 🔗 Access Points
 
-- **Admin Panel**: `/judging-system/admin` → Manage judges
-- **Judge Portal**: `/judging-system/judges` → Submit scores
+- **Admin Panel**: `/judging-system/admin/` → Manage judges
+- **Judge Portal**: `/judging-system/judges/` → Submit scores
 - **Public Scoreboard**: `/judging-system/public/scoreboard.php` → View results
 
 ---
