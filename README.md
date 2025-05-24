@@ -28,13 +28,30 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
 
 2. **Create the database**
    ```bash
-   mysql -u root -p < sql/schema.sql
+   # Create database and user (MySQL example)
+    mysql -u root -p -e "CREATE DATABASE judging_system;"
+    mysql -u root -p -e "CREATE USER 'judge_app'@'localhost' IDENTIFIED BY 'securepassword';"
+    mysql -u root -p -e "GRANT ALL PRIVILEGES ON judging_system.* TO 'judge_app'@'localhost';" 
+
+   # Import schema
+    mysql -u root -p judging_system < sql/schema.sql
+
+    # Optional: Load sample data
+   mysql -u root -p judging_system < sql/sample_data.sql
+
    ```
 
 3. **Configure database credentials**
    ```bash
    cp includes/config.example.php includes/config.php
-   nano includes/config.php
+   Edit includes/config.php with your database credentials:
+   php
+   <?php
+   define('DB_HOST', 'localhost');
+   define('DB_NAME', 'judging_system');
+   define('DB_USER', 'judge_app');
+   define('DB_PASS', 'securepassword');
+   
    ```
 
 4. **Start development server (PHP built-in)**
@@ -43,6 +60,23 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
    ```
 
 ---
+## 6️⃣ Troubleshooting Common Issues
+Database Connection Errors:
+
+bash
+# Test your DB connection
+mysql -u judge_app -psecurepassword judging_system -e "SHOW TABLES;"
+File Permissions:
+
+bash
+chmod -R 755 storage/ logs/
+chown -R www-data:www-data .  # For Apache
+Missing Dependencies:
+
+bash
+# On Ubuntu/Debian
+sudo apt install php-mysql php-curl php-mbstring
+
 
 ## 🗄️ Database Schema
 
@@ -111,27 +145,13 @@ If expanded further, features could include:
 
 ---
 
-## 📦 Deployment
 
-For live access (optional):
-
-- **Free hosting**: [000webhost](https://www.000webhost.com/), [InfinityFree](https://infinityfree.net/)
-- **Paid VPS**: [DigitalOcean](https://digitalocean.com), [Linode](https://linode.com) ($5/month)
-- **Local**: Share demo video
-
-### To deploy:
-- Upload all files to host
-- Import `sql/schema.sql` into your database
-- Edit `includes/config.php` with production credentials
-- Set permissions: `755` for directories, `644` for files
-
----
 
 ## 🔗 Access Points
 
-- **Admin Panel**: `/admin` → Manage judges
-- **Judge Portal**: `/judges` → Submit scores
-- **Public Scoreboard**: `/scoreboard` → View results
+- **Admin Panel**: `/judging-system/admin` → Manage judges
+- **Judge Portal**: `/judging-system/judges` → Submit scores
+- **Public Scoreboard**: `/judging-system/public/scoreboard.php` → View results
 
 ---
 
