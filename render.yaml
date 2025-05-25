@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: judging-system
+    runtime: php
+    startCommand: ./start.sh
+    envVars:
+      - key: DB_HOST
+        value: your-mysql-host
+      - key: DB_NAME
+        value: judging_system

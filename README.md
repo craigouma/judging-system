@@ -18,6 +18,9 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
 
 ---
 
+## Live Demo
+[Access the live application here](https://your-deployed-url.com)
+
 ### Installation
 
 1. **Clone the repository**
