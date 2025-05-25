@@ -23,3 +23,4 @@ RUN a2enmod rewrite
 
 # 6. Fix permissions for Apache
 RUN chown -R www-data:www-data /var/www/html
+

@@ -7,4 +7,5 @@ services:
       - key: DB_HOST
         value: your-mysql-host
       - key: DB_NAME
-        value: judging_system
+        #value: judging_system
+        value: /var/www/html/public

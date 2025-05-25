@@ -1,11 +1,14 @@
-DirectoryIndex index.php
+# /public/.htaccess
 Options -Indexes +FollowSymLinks
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
-    RewriteRule ^index\.php$ - [L]
+    
+    # Skip real files/directories
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule . /index.php [L]
+    
+    # Route everything through router.php
+    RewriteRule ^(.*)$ /router.php [L]
 </IfModule>
