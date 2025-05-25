@@ -19,7 +19,7 @@ A complete judging system built using **PHP**, **MySQL**, and **vanilla JavaScri
 ---
 
 ## Live Demo
-[Access the live application here](https://your-deployed-url.com)
+[Access the live application here](https://judging-system-2.onrender.com)
 
 ### Installation
 
@@ -69,6 +69,10 @@ sudo chmod -R 775 /var/www/html/judging-system/storage  # If you have logs/cache
 4. **Start development server (PHP built-in)**
    ```bash
    php -S localhost:8000 router.php
+   ```
+   **Start Apache**
+   ```bash
+   sudo systemctl restart apache2
    ```
 
 ---

@@ -1,10 +1,13 @@
 <?php
-$host = getenv('DB_HOST') ?: 'localhost';
-$db = getenv('DB_NAME') ?: 'judging_system';
-$user = getenv('DB_USER') ?: 'judging_user';
-$pass = getenv('DB_PASS') ?: 'SecurePassword123!';
+define('DB_HOST', 'db');
+define('DB_USER', 'judging_user');
+define('DB_PASS', 'SecurePassword123!');
 
-$conn = new mysqli($host, $user, $pass, $db);
+define('DB_NAME', 'judging_system');
+
+// Create connection
+$conn = new mysqli('db', 'judging_user',  'SecurePassword123!', 'judging_system', 3306);
+
 
 // Check connection
 if ($conn->connect_error) {

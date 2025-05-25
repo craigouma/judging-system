@@ -7,11 +7,8 @@ services:
     environment:
       - DB_HOST=db
       - DB_NAME=judging_system
-      - DB_USER=judging_user
-      - DB_PASS=SecurePassword123!
     depends_on:
       - db
-
   db:
     image: mysql:5.7
     environment:
@@ -19,3 +16,6 @@ services:
       MYSQL_DATABASE: judging_system
       MYSQL_USER: judging_user
       MYSQL_PASSWORD: SecurePassword123!
+
+
+      
