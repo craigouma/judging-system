@@ -6,7 +6,7 @@ define('DB_PASS', 'SecurePassword123!');
 define('DB_NAME', 'judging_system');
 
 // Create connection
-$conn = new mysqli('localhost', 'judging_user', 'SecurePassword123!', 'judging_system');
+$conn = new mysqli('localhost', 'judging_user',  'SecurePassword123!', 'judging_system');
 
 
 // Check connection
