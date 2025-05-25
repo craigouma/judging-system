@@ -3,6 +3,12 @@ FROM php:8.2-apache
 # 1. Set working directory
 WORKDIR /var/www/html
 
+# Ensure index.php is treated as default
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
+
+# Enable directory indexing (optional)
+RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/Options Indexes FollowSymLinks/Options FollowSymLinks/' /etc/apache2/apache2.conf
+
 # 2. Copy files (excluding unnecessary files)
 COPY . .
 

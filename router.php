@@ -9,7 +9,8 @@ ini_set('error_log', __DIR__ . '/logs/php_errors.log');
 
 // Define base paths
 define('BASE_PATH', __DIR__);
-define('BASE_DIR', '/judging-system');
+#define('BASE_DIR', '/judging-system');
+define('BASE_DIR', '');
 
 // Load configuration
 require BASE_PATH . '/includes/config.php';
